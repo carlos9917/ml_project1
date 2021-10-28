@@ -56,7 +56,11 @@ def user_input_features():
     data["lights"] = light
     data["T_out"] = temp_out
     data["RH_out"] = hum_out
+    for col in ['Press_mm_hg', 'Windspeed', 'Visibility', 'lights','Tdewpoint']:
+        data[col] = 0.0
     features = pd.DataFrame(data, index=[0])
+
+
     return features
 df = user_input_features()
 st.subheader('User Input parameters')
