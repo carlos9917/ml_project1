@@ -4,10 +4,10 @@ import base64
 #import matplotlib.pyplot as plt
 #import matplotlib.dates as md
 #from matplotlib.ticker import MaxNLocator
-import seaborn as sns
+#import seaborn as sns
 import numpy as np
-import yfinance as yf
-import sqlite3
+#import yfinance as yf
+#import sqlite3
 from datetime import datetime
 from datetime import timedelta
 from collections import OrderedDict
