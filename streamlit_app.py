@@ -46,7 +46,7 @@ def user_input_features():
     temperature["T9"] = st.sidebar.slider('Temperature sensor 9', 5, 30, 1)
     temp_out = 20 #st.sidebar.slider("Temperature outside",1,30,1)
     hum_out = 60 #st.sidebar.slider("Humidity outside",10,100,10)
-    light = st.sidebar.slider('Light intensity (Watts)', 0, 70, 10)
+    light = st.sidebar.slider('Lights use (Wh)', 0, 70, 10)
     data={} 
     
     for col in ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9']:
@@ -69,7 +69,7 @@ st.subheader('User Input parameters')
 st.write(df)
 rf = load_model()
 prediction = rf.predict(df)
-st.subheader('Prediction (Watts)')
+st.subheader('Consumption prediction (Wh)')
 print(np.exp(prediction))
 st.write(np.exp(prediction[0]))
 #st.write(prediction)
