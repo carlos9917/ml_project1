@@ -1,9 +1,9 @@
 import streamlit as st
 import pandas as pd
 import base64
-import matplotlib.pyplot as plt
-import matplotlib.dates as md
-from matplotlib.ticker import MaxNLocator
+#import matplotlib.pyplot as plt
+#import matplotlib.dates as md
+#from matplotlib.ticker import MaxNLocator
 import seaborn as sns
 import numpy as np
 import yfinance as yf
