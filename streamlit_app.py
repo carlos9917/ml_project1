@@ -17,8 +17,10 @@ st.title('Appliances prediction')
 st.markdown("""
 This app calculates an appliance consumption
 based on the user input. \n
-It can be several of the following features:
-Humidity (%), Temperature (Celsius), Light (Watts)
+Currently the user can vary only the 9 temperature sensors
+inside the room, as well as the light intensity. \n
+Setting the humidity inside (%) will set all sensors to the same value.
+Temperature (Celsius)
 """)
 
 # Read the sqlite file
@@ -69,7 +71,7 @@ rf = load_model()
 prediction = rf.predict(df)
 st.subheader('Prediction (Watts)')
 print(np.exp(prediction))
-st.write(np.exp(prediction))
+st.write(np.exp(prediction[0]))
 #st.write(prediction)
 
 
