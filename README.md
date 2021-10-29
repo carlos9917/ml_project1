@@ -23,22 +23,42 @@ Final model is trained there and saved in a pickle file.
 
 ## Deployment
 
-There are two options for deployment.
+The requirements are included in Pipfile and Pipifile.lock
+Use pipenv to activate environment with
+pipenv shell
+
+There are two options for running the model.
+
 ### Fast api
-One is local, using the provided Dockerfile
+This one is local, using the provided Dockerfile
 and a fast-api webapp.
+
 To run the app locally use the main.py file
 python main.py
 and open the localhost indicated in link
 Then open:
-http://127.0.0.1:8000/docs
+http://0.0.0.0:9696/docs
+
+To test, use the example images in *short_tut* as a guide.
+You need to open the "MEASUREMENTS" tab and click on "Try out"
+Then type a dictionary with values in "body", as image 3 shows.
+Then you go down to POST and click on Execute.
+The result will show up in "Response body", as image 6 shows.
+
+To run the app in a container, first build the container using
+build_image.sh
+Then run the container using
+run_docker.sh
+It will show the same as the local above.
 
 Not very pretty, but it works.
-The second option is more visually appealing
 
 ### streamlit
+The second option is more visually appealing
 The second app is deployed with streamlit. The app has been
 uploaded here:
 https://share.streamlit.io/carlos9917/ml_project1
 Simply follow instructions in webapp to test.
 All the source code is included in this repo.
+It only needs streamlit_app.py, the bin file and the requirements.txt file
+
