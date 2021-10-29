@@ -1,5 +1,6 @@
 #FROM python:3.8.12-slim
-FROM agrigorev/zoomcamp-model:3.8.12-slim
+#FROM agrigorev/zoomcamp-model:3.8.12-slim
+FROM python:3.8-slim
 
 RUN pip install pipenv
 
@@ -19,4 +20,5 @@ COPY ["main.py", "random_forest.bin","app/", "./"]
 EXPOSE 8000
 
 #ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:9696", "webserver:app"]
-ENTRYPOINT ["python", "main.py"]
+#ENTRYPOINT ["python", "main.py"]
+ENTRYPOINT ["uvicorn"", "main:app", "host:0.0.0.0","--reload"]
