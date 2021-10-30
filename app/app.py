@@ -1,6 +1,7 @@
 # Importing the FastApi class
 from fastapi import FastAPI
 import pandas as pd
+import numpy as np
 
 # Creating an app object
 app = FastAPI()
@@ -61,7 +62,7 @@ user_input = {
 features = pd.DataFrame(user_input, index=[0])
 
 model = get_model()
-y_pred = model.predict(features)
+y_pred = np.exp(model.predict(features)) #remember I trained it for log(Appl)
 
 prediction = [ {
          "features": user_input,
