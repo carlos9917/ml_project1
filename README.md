@@ -1,5 +1,16 @@
 # midterm project for Alex Grigoriev ML Zoomcamp
 
+I Initially aimed to use some dataset with weather data,
+which is a topic I am personally interested in
+but data engineering was a bit of a pain given the short
+time to develop this project. I decided to try a simpler
+dataset, which I found in the link below. It includes
+some weather data, but it is mostly limited to temperature
+and humidity sensors.
+The final model is not very accurate, but I focused
+more on following all the steps described in the 
+course up to now rather than getting a perfect model.
+
 ## Project
 
 Appliances energy prediction
@@ -18,7 +29,8 @@ Two random variables were also included in the data set for testing the regressi
 
 ## EDA and model development
 
-Included in jupyter notebook. 
+Included in jupyter notebook.  Please see file
+`EDA_and_model_selection.ipynb` for details.
 Final model is trained there and saved in a pickle file.
 
 ## Deployment
@@ -26,6 +38,18 @@ Final model is trained there and saved in a pickle file.
 The requirements are included in Pipfile and Pipifile.lock
 Use pipenv to activate environment with
 pipenv shell
+In order to test the models many features have
+to be given. For the streamlit option below
+some values were hard coded.
+
+For the Fastapi version all values
+can be given. To get more up-to-date data
+from the weather station near the location
+where the model was trained a script do
+download data from Weather underground is
+included in scrap_weather_data (if the user wishes to test that).
+Note this needs access selenium installed
+and the appropriate path to the chrome driver.
 
 There are two options for running the model.
 
@@ -39,7 +63,7 @@ and open the localhost indicated in link
 Then open:
 http://0.0.0.0:9696/docs
 
-To test, use the example images in *short_tut* as a guide.
+To test, use the example images in *short_tut_fapi* as a guide.
 You need to open the "MEASUREMENTS" tab and click on "Try out"
 Then type a dictionary with values in "body", as image 3 shows.
 Then you go down to POST and click on Execute.
