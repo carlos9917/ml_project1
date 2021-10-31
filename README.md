@@ -63,7 +63,7 @@ and open the localhost indicated in link
 Then open:
 http://0.0.0.0:9696/docs
 
-To test, use the example images in *short_tut_fapi* as a guide.
+To test, use the example images in [short_tut_fapi](https://github.com/carlos9917/ml_project1/tree/master/short_tut_fapi) as a guide.
 You need to open the "MEASUREMENTS" tab and click on "Try out"
 Then type a dictionary with values in "body", as image 3 shows.
 Then you go down to POST and click on Execute.
@@ -71,6 +71,7 @@ The result will show up in "Response body", as image 6 shows.
 
 To run the app in a container, first build the container using
 `build_image.sh`
+
 Then run the container using
 `run_docker.sh`
 It will show the same as the local above.
