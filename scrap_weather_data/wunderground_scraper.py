@@ -157,6 +157,7 @@ if __name__=="__main__":
     
     cols=["Temp_avg","Hum_avg","Wind_avg","Pres_avg","Date"]
     dict_out={"Date":"date","Temp_avg":"T_out","Hum_avg":"RH_out",
+            "Dew_avg":"Tdewpoint",
                "Wind_avg":"Windspeed","Pres_avg":"Press_mm_hg"}
     from collections import OrderedDict
     
@@ -164,7 +165,7 @@ if __name__=="__main__":
     #change units!!!!
     #Time	Temperature (° F)	Dew Point (° F)	Humidity (%)	Wind Speed (mph)	Pressure (Hg)	Precipitation (in)
     for key in dict_out.keys():
-        if key  == "Temp_avg": #F to C
+        if key  in ["Temp_avg","Dew_avg"]: #F to C
             val_F = float(df.tail(1)[key].values[0])
             out[dict_out[key]] = (val_F - 32)*5/9
         elif key  == "Pres_avg":
@@ -181,8 +182,7 @@ if __name__=="__main__":
     for key in out.keys():
         print(f"{key} : {out[key]},")
     print("}")
-    
+    df_out = pd.DataFrame(out,index=[0])
+    df_out.to_csv("weather_data.csv",index=False)
     #print(out)
-    
     #df_out=pd.DataFrame(out)
-    #df.to_csv("chievres_weather.csv",index=False)

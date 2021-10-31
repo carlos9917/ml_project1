@@ -70,9 +70,9 @@ Then you go down to POST and click on Execute.
 The result will show up in "Response body", as image 6 shows.
 
 To run the app in a container, first build the container using
-build_image.sh
+`build_image.sh`
 Then run the container using
-run_docker.sh
+`run_docker.sh`
 It will show the same as the local above.
 
 Not very pretty, but it works.
