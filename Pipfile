@@ -11,6 +11,7 @@ pandas = "*"
 selenium = "*"
 streamlit = "*"
 beautifulsoup4 = "*"
+seaborn = "*"
 
 [dev-packages]
 
