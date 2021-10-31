@@ -6,7 +6,6 @@ import base64
 #from matplotlib.ticker import MaxNLocator
 #import seaborn as sns
 import numpy as np
-import os
 #import yfinance as yf
 #import sqlite3
 from datetime import datetime
@@ -34,6 +33,7 @@ def load_model(model_file="random_forest.bin"):
 st.sidebar.header('User Input Parameters')
 
 def user_input_features():
+    humidity = st.sidebar.slider('Humidity inside', 10, 100, 10)
     temperature={}
     temperature["T1"] = st.sidebar.slider('Temperature sensor 1', 5, 30, 1)
     temperature["T2"] = st.sidebar.slider('Temperature sensor 2', 5, 30, 1)
@@ -44,43 +44,22 @@ def user_input_features():
     temperature["T7"] = st.sidebar.slider('Temperature sensor 7', 5, 30, 1)
     temperature["T8"] = st.sidebar.slider('Temperature sensor 8', 5, 30, 1)
     temperature["T9"] = st.sidebar.slider('Temperature sensor 9', 5, 30, 1)
-    humidity={}
-    
-    humidity["RH_1"] = st.sidebar.slider('Relative Humidity sensor 1', 30, 100, 10)
-    humidity["RH_2"] = st.sidebar.slider('Relative Humidity sensor 2', 30, 100, 10)
-    humidity["RH_3"] = st.sidebar.slider('Relative Humidity sensor 3', 30, 100, 10)
-    humidity["RH_4"] = st.sidebar.slider('Relative Humidity sensor 4', 30, 100, 10)
-    humidity["RH_5"] = st.sidebar.slider('Relative Humidity sensor 5', 30, 100, 10)
-    humidity["RH_6"] = st.sidebar.slider('Relative Humidity sensor 6', 30, 100, 10)
-    humidity["RH_7"] = st.sidebar.slider('Relative Humidity sensor 7', 30, 100, 10)
-    humidity["RH_8"] = st.sidebar.slider('Relative Humidity sensor 8', 30, 100, 10)
-    humidity["RH_9"] = st.sidebar.slider('Relative Humidity sensor 9', 30, 100, 10)
-
+    temp_out = 20 #st.sidebar.slider("Temperature outside",1,30,1)
+    hum_out = 60 #st.sidebar.slider("Humidity outside",10,100,10)
     light = st.sidebar.slider('Lights use (Wh)', 0, 70, 10)
-
-    #set the data:
     data={} 
+    
     for col in ['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9']:
         data[col] = temperature[col]
+
     for col in ['RH_1', 'RH_2', 'RH_3', 'RH_4', 'RH_5', 'RH_6', 'RH_7', 'RH_8', 'RH_9']:
-        data[col] = 80 #humidity[col]
+        data[col] = humidity
 
     data["lights"] = light
-
-    #These values are updated from the last weather data that
-    #it was available at the moment of deployment
-    if os.path.isfile("./scrap_weather_data/weather_data.csv"):
-        weather_data = pd.read_csv("./scrap_weather_data/weather_data.csv")
-    data["Visibility"] = 0 #not found in weather data, setting to fixed value
-    temp_out = 20
-    hum_out = 60
     data["T_out"] = temp_out
     data["RH_out"] = hum_out
-    for col in ["T_out","RH_out",'Press_mm_hg', 'Windspeed', 'Tdewpoint']:
-        #data[col] = 0.0
-        data[col]=weather_data[col].values[0]
-    print("Using weather data")
-    print(data)
+    for col in ['Press_mm_hg', 'Windspeed', 'Visibility', 'lights','Tdewpoint']:
+        data[col] = 0.0
     features = pd.DataFrame(data, index=[0])
 
 
