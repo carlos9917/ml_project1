@@ -11,6 +11,10 @@ The final model is not very accurate, but I focused
 more on following all the steps described in the 
 course up to now rather than getting a perfect model.
 
+Note that the scripts were written in Linux, I have
+not tested this under Windows (since I do not have access
+to Windows machine)
+
 ## Project
 
 Appliances energy prediction

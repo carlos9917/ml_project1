@@ -12,6 +12,7 @@ selenium = "*"
 streamlit = "*"
 beautifulsoup4 = "*"
 seaborn = "*"
+tqdm = "*"
 
 [dev-packages]
 
